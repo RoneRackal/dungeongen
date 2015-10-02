@@ -1,0 +1,36 @@
+﻿Player HP
+ + Way to lose HP (function call)
+ - No HP = dead, gameover screen?
+ + HUD HP
+ + Gain HP with items (low priority)
+ 
+Monster Attack
+ + Monster generic attack
+ + Monster new sprite
+ + Monster attack sprite (pulse/cone)
+ + Monster attack cone/pulse (make generic? coneAttackMonster?)
+ + Monster projectiles/attack, generic?
+ + Collision with monster projectiles = -HP - This needs to make sure you can only be hit by 1 of the enemies attack projectiles
+
+Player Multiple Weapons
+ * Inventory/equipment system to know which weapon is currently equipt
+ + HUD for Inventory/Equipment
+ + Switch between weapons which are in your inventory, fire will shoot using curently selected weapon
+
+Player Sword
+ + Sword sprite
+ + Sword collision objects rotating
+ + Sword size and speed manipulation
+ + Sword knockback effect on hit
+
+Loot System
+ + Player heal capability
+ + Heart pickup sprite
+ + Spawn HP Heart 30% chance on death of enemy
+ + Heart pickup item collision with player
+
+Improvements
+ + Key sprite, needs black outline, more clear, maybe animated as well
+
+Bugs
+ + Kill monster = game crash (need null check on A* callback?) (or maybe not, game crashes on the last mob in a level only?)

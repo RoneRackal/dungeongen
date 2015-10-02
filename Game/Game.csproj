@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E9A0D5FF-8401-4DBA-BA7A-C15D1AA6E836}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Game</RootNamespace>
+    <AssemblyName>Game</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Debug\LootManager.js" />
+    <Content Include="Scripts\Debug\MonsterAttacks.js" />
+    <Content Include="Scripts\phaser.js" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\Debug\Dungeon.js" />
+    <Content Include="Scripts\Debug\Game.js" />
+    <Content Include="Scripts\Debug\HUD.js" />
+    <Content Include="Scripts\Debug\LevelExit.js" />
+    <Content Include="Scripts\Debug\Monsters.js" />
+    <Content Include="Scripts\Debug\PickupItems.js" />
+    <Content Include="Scripts\Debug\Player.js" />
+    <Content Include="Scripts\Debug\Room.js" />
+    <Content Include="Scripts\Debug\Utility.js" />
+    <Content Include="Scripts\easystar-0.2.0.min.js" />
+    <Content Include="Scripts\phaser.min.js" />
+    <Content Include="october.txt" />
+    <Content Include="Sprites\Actors\bat.png" />
+    <Content Include="Sprites\Actors\batattack.png" />
+    <Content Include="Sprites\Actors\bullet.png" />
+    <Content Include="Sprites\Actors\fireball.png" />
+    <Content Include="Sprites\Actors\player_base.png" />
+    <Content Include="Sprites\Actors\player_hair_down.png" />
+    <Content Include="Sprites\Actors\player_hair_left.png" />
+    <Content Include="Sprites\Actors\player_hair_right.png" />
+    <Content Include="Sprites\Actors\player_hair_up.png" />
+    <Content Include="Sprites\PickupItems\key.png" />
+    <Content Include="Sprites\PickupItems\pickupheart.png" />
+    <Content Include="Sprites\Actors\player.png" />
+    <Content Include="Sprites\Actors\slime.png" />
+    <Content Include="Sprites\Actors\slimeattack.png" />
+    <Content Include="Sprites\Actors\sword.png" />
+    <Content Include="Sprites\Common\block64.png" />
+    <Content Include="Sprites\Common\block8.png" />
+    <Content Include="Sprites\Common\circle64.png" />
+    <Content Include="Sprites\Dungeon\debris_medium_0.png" />
+    <Content Include="Sprites\Dungeon\debris_medium_1.png" />
+    <Content Include="Sprites\Dungeon\debris_medium_2.png" />
+    <Content Include="Sprites\Dungeon\debris_small_0.png" />
+    <Content Include="Sprites\Dungeon\debris_small_1.png" />
+    <Content Include="Sprites\Dungeon\doore.png" />
+    <Content Include="Sprites\Dungeon\dooreopen.png" />
+    <Content Include="Sprites\Dungeon\doorn.png" />
+    <Content Include="Sprites\Dungeon\doornopen.png" />
+    <Content Include="Sprites\Dungeon\doors.png" />
+    <Content Include="Sprites\Dungeon\doorsopen.png" />
+    <Content Include="Sprites\Dungeon\doorw.png" />
+    <Content Include="Sprites\Dungeon\doorwopen.png" />
+    <Content Include="Sprites\Dungeon\floor1.png" />
+    <Content Include="Sprites\Dungeon\floor1bones.png" />
+    <Content Include="Sprites\Dungeon\floor2.png" />
+    <Content Include="Sprites\Dungeon\floor2bones.png" />
+    <Content Include="Sprites\Dungeon\floor2bota.png" />
+    <Content Include="Sprites\Dungeon\floor2botb.png" />
+    <Content Include="Sprites\Dungeon\floor2botleft.png" />
+    <Content Include="Sprites\Dungeon\floor2botleftfull.png" />
+    <Content Include="Sprites\Dungeon\floor2botright.png" />
+    <Content Include="Sprites\Dungeon\floor2botrightfull.png" />
+    <Content Include="Sprites\Dungeon\floor2lefta.png" />
+    <Content Include="Sprites\Dungeon\floor2leftb.png" />
+    <Content Include="Sprites\Dungeon\floor2righta.png" />
+    <Content Include="Sprites\Dungeon\floor2rightb.png" />
+    <Content Include="Sprites\Dungeon\floor2topa.png" />
+    <Content Include="Sprites\Dungeon\floor2topb.png" />
+    <Content Include="Sprites\Dungeon\floor2topleft.png" />
+    <Content Include="Sprites\Dungeon\floor2topleftfull.png" />
+    <Content Include="Sprites\Dungeon\floor2topright.png" />
+    <Content Include="Sprites\Dungeon\floor2toprightfull.png" />
+    <Content Include="Sprites\Dungeon\lock.png" />
+    <Content Include="Sprites\Dungeon\walldea.png" />
+    <Content Include="Sprites\Dungeon\walldeb.png" />
+    <Content Include="Sprites\Dungeon\walldna.png" />
+    <Content Include="Sprites\Dungeon\walldnb.png" />
+    <Content Include="Sprites\Dungeon\walldsa.png" />
+    <Content Include="Sprites\Dungeon\walldsb.png" />
+    <Content Include="Sprites\Dungeon\walldwa.png" />
+    <Content Include="Sprites\Dungeon\walldwb.png" />
+    <Content Include="Sprites\Dungeon\walle1.png" />
+    <Content Include="Sprites\Dungeon\walle2.png" />
+    <Content Include="Sprites\Dungeon\walle3.png" />
+    <Content Include="Sprites\Dungeon\walle4.png" />
+    <Content Include="Sprites\Dungeon\walle5.png" />
+    <Content Include="Sprites\Dungeon\walle6.png" />
+    <Content Include="Sprites\Dungeon\walln1.png" />
+    <Content Include="Sprites\Dungeon\walln2.png" />
+    <Content Include="Sprites\Dungeon\walln3.png" />
+    <Content Include="Sprites\Dungeon\walln4.png" />
+    <Content Include="Sprites\Dungeon\walln5.png" />
+    <Content Include="Sprites\Dungeon\walln6.png" />
+    <Content Include="Sprites\Dungeon\wallne.png" />
+    <Content Include="Sprites\Dungeon\wallnw.png" />
+    <Content Include="Sprites\Dungeon\walls1.png" />
+    <Content Include="Sprites\Dungeon\walls2.png" />
+    <Content Include="Sprites\Dungeon\walls3.png" />
+    <Content Include="Sprites\Dungeon\walls4.png" />
+    <Content Include="Sprites\Dungeon\walls5.png" />
+    <Content Include="Sprites\Dungeon\walls6.png" />
+    <Content Include="Sprites\Dungeon\wallse.png" />
+    <Content Include="Sprites\Dungeon\wallsw.png" />
+    <Content Include="Sprites\Dungeon\wallw1.png" />
+    <Content Include="Sprites\Dungeon\wallw2.png" />
+    <Content Include="Sprites\Dungeon\wallw3.png" />
+    <Content Include="Sprites\Dungeon\wallw4.png" />
+    <Content Include="Sprites\Dungeon\wallw5.png" />
+    <Content Include="Sprites\Dungeon\wallw6.png" />
+    <Content Include="Sprites\HUD\hud.png" />
+    <Content Include="bugs.txt" />
+    <Content Include="Sprites\HUD\hudheart1.png" />
+    <Content Include="Sprites\HUD\hudheart2.png" />
+    <Content Include="Sprites\HUD\hudheart3.png" />
+    <Content Include="Sprites\HUD\hudheart4.png" />
+    <Content Include="Sprites\HUD\hudmelee.png" />
+    <Content Include="Sprites\HUD\hudranged.png" />
+    <Content Include="september.txt" />
+    <Content Include="Sprites\PickupItems\coin1.png" />
+    <Content Include="Sprites\PickupItems\coin10.png" />
+    <Content Include="Sprites\PickupItems\coin5.png" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65418</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:65418/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

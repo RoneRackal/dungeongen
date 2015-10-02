@@ -1,0 +1,14 @@
+﻿- items spawning in rocks
+- rocks spawning on edge
+- keys need black outline
+- tries to move the mob after it no longer exists
+
+
+September
+
+- Monster attack remains after monster dies
+- Key spawns in rubble
+- You spawn in rubble
+- Rubble spawns in walls
+- Rubble spawns blocking doors
+- Fix a-star
