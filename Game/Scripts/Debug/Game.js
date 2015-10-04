@@ -137,6 +137,7 @@ function GameManager()
         game.load.image('swordattack', 'Sprites/Actors/sword.png');
 
         game.load.spritesheet('player_base', 'Sprites/Actors/player_base.png', 64, 64, 88);
+        game.load.spritesheet('player_temp', 'Sprites/Actors/player_temp.png', 64, 64, 88);
 
         // Pickup Items
         game.load.image('key', 'Sprites/PickupItems/key.png');

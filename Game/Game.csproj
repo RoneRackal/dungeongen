@@ -90,6 +90,7 @@
     <Content Include="Sprites\Actors\player_hair_left.png" />
     <Content Include="Sprites\Actors\player_hair_right.png" />
     <Content Include="Sprites\Actors\player_hair_up.png" />
+    <Content Include="Sprites\Actors\player_temp.png" />
     <Content Include="Sprites\PickupItems\key.png" />
     <Content Include="Sprites\PickupItems\pickupheart.png" />
     <Content Include="Sprites\Actors\player.png" />
