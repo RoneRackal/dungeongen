@@ -12,17 +12,6 @@ var dungeon;
 var hud;
 var lootManager;
 
-window.groupDungeon;
-window.groupDungeonWalls;
-window.groupDungeonOverhead;
-window.groupPickupItems;
-window.groupActors;
-window.groupHUD;
-window.groupLevelEntities;
-window.groupUnderBlockLayer;
-window.groupMonsterProjectiles;
-window.groupPlayerProjectiles;
-
 function Init()
 {
     gameManager.Init();
@@ -120,6 +109,9 @@ function GameManager()
         // HUD
         groupHUD = game.add.group();
         groupHUD.fixedToCamera = true;
+            
+            // Minimap, inside HUD group
+            groupMinimap = groupHUD.add.group();
 
         player = new Player();
         hud = new HUD();

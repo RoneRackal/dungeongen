@@ -18,6 +18,7 @@ Loot System
    + Coin sprites
 
 Minimap
+ - Minimap sprites
  - Toggle minimap on and off
  - Minimap based on map generated
  - Minimap explored as you enter new rooms
@@ -61,4 +62,4 @@ Refactoring
  - Player init seperation
  - Monster init seperation
 
-12/47
+12/48

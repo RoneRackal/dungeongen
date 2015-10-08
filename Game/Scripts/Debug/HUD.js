@@ -101,3 +101,13 @@ HUD.prototype.Update = function ()
     this.coinsText.setText("Coins: " + player.coins);
 
 }
+
+HUD.prototype.BuildMinimap = function ()
+{
+
+}
+
+HUD.prototype.ShowMinimap = function ()
+{
+
+}
