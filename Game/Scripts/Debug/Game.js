@@ -111,7 +111,7 @@ function GameManager()
         groupHUD.fixedToCamera = true;
             
             // Minimap, inside HUD group
-            groupMinimap = groupHUD.add.group();
+            groupMinimap = groupHUD.add(new Phaser.Group(game));
 
         player = new Player();
         hud = new HUD();
