@@ -123,13 +123,12 @@ function GameManager()
     this.Preload = function ()
     {
         // Actors
-        game.load.image('player', 'Sprites/Actors/player.png');
+        //game.load.image('player', 'Sprites/Actors/player.png');
         game.load.image('bullet', 'Sprites/Actors/bullet.png');
         game.load.image('fireball', 'Sprites/Actors/fireball.png');
         game.load.image('swordattack', 'Sprites/Actors/sword.png');
 
-        game.load.spritesheet('player_base', 'Sprites/Actors/player_base.png', 64, 64, 88);
-        game.load.spritesheet('player_temp', 'Sprites/Actors/player_temp.png', 64, 64, 88);
+        game.load.spritesheet('player_large', 'Sprites/Actors/playerlarge.png', 192, 192, 118);
 
         // Pickup Items
         game.load.image('key', 'Sprites/PickupItems/key.png');
@@ -143,7 +142,7 @@ function GameManager()
         game.load.spritesheet('bat', 'Sprites/Actors/bat.png', 32, 32, 12);
 
         game.load.image('levelexit', 'Sprites/levelexit.png');
-        game.load.image('minislime', 'Sprites/minislime.png');
+        //game.load.image('minislime', 'Sprites/minislime.png');
 
         // Projectiles
         game.load.spritesheet('slimeattack', 'Sprites/Actors/slimeattack.png', 96, 96);

@@ -10,28 +10,45 @@ function Player()
 
 Player.prototype.Init = function ()
 {
-    this.sprite = new Phaser.Sprite(game, 300, 300, 'player_temp');
+    this.sprite = new Phaser.Sprite(game, 300, 300, 'player_large');
     game.physics.arcade.enable(this.sprite);
     groupActors.add(this.sprite);
 
-    this.sprite.anchor.setTo(0.5, 0.75);
+    this.sprite.anchor.setTo(0.5, 0.6);
     this.sprite.object = this;
     this.sprite.body.setSize(24, 24, 0, 8);
 
-    this.sprite.animations.add('castup', [0, 1, 2, 3, 4, 5, 6], 14, false);
-    this.sprite.animations.add('castleft', [7, 8, 9, 10, 11, 12, 13], 14, false);
-    this.sprite.animations.add('castdown', [14, 15, 16, 17, 18, 19, 20], 14, false);
-    this.sprite.animations.add('castright', [21, 22, 23, 24, 25, 26, 27], 14, false);
+    this.sprite.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+    this.sprite.animations.add('left', [9, 10, 11, 12, 13, 14, 15, 16, 17], 20, true);
+    this.sprite.animations.add('down', [18, 19, 20, 21, 22, 23, 24, 25, 26], 20, true);
+    this.sprite.animations.add('right', [27, 28, 29, 30, 31, 32, 33, 34, 35], 20, true);
 
-    this.sprite.animations.add('up', [28, 29, 30, 31, 32, 33, 34, 35, 36], 20, true);
-    this.sprite.animations.add('left', [37, 38, 39, 40, 41, 42, 43, 44, 45], 20, true);
-    this.sprite.animations.add('down', [46, 47, 48, 49, 50, 51, 52, 53, 54], 20, true);
-    this.sprite.animations.add('right', [55, 56, 57, 58, 59, 60, 61, 62, 63], 20, true);
+    this.sprite.animations.add('shootup', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48], 30, false);
+    this.sprite.animations.add('shootleft', [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61], 30, false);
+    this.sprite.animations.add('shootdown', [62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74], 30, false);
+    this.sprite.animations.add('shootright', [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], 30, false);
 
-    this.sprite.animations.add('slashup', [64, 65, 66, 67, 68, 69], 20, false);
-    this.sprite.animations.add('slashleft', [70, 71, 72, 73, 74, 75], 20, false);
-    this.sprite.animations.add('slashdown', [76, 77, 78, 79, 80, 81], 20, false);
-    this.sprite.animations.add('slashright', [82, 83, 84, 85, 86, 87], 20, false);
+    this.sprite.animations.add('death', [88, 89, 90, 91, 92, 93], 2, false);
+
+    this.sprite.animations.add('slashup', [94, 95, 96, 97, 98, 99], 20, false);
+    this.sprite.animations.add('slashleft', [100, 101, 102, 103, 104, 105], 20, false);
+    this.sprite.animations.add('slashdown', [106, 107, 108, 109, 110, 111], 20, false);
+    this.sprite.animations.add('slashright', [112, 113, 114, 115, 116, 117], 20, false);
+
+    //this.sprite.animations.add('castup', [0, 1, 2, 3, 4, 5, 6], 14, false);
+    //this.sprite.animations.add('castleft', [7, 8, 9, 10, 11, 12, 13], 14, false);
+    //this.sprite.animations.add('castdown', [14, 15, 16, 17, 18, 19, 20], 14, false);
+    //this.sprite.animations.add('castright', [21, 22, 23, 24, 25, 26, 27], 14, false);
+
+    //this.sprite.animations.add('up', [28, 29, 30, 31, 32, 33, 34, 35, 36], 20, true);
+    //this.sprite.animations.add('left', [37, 38, 39, 40, 41, 42, 43, 44, 45], 20, true);
+    //this.sprite.animations.add('down', [46, 47, 48, 49, 50, 51, 52, 53, 54], 20, true);
+    //this.sprite.animations.add('right', [55, 56, 57, 58, 59, 60, 61, 62, 63], 20, true);
+
+    //this.sprite.animations.add('slashup', [64, 65, 66, 67, 68, 69], 20, false);
+    //this.sprite.animations.add('slashleft', [70, 71, 72, 73, 74, 75], 20, false);
+    //this.sprite.animations.add('slashdown', [76, 77, 78, 79, 80, 81], 20, false);
+    //this.sprite.animations.add('slashright', [82, 83, 84, 85, 86, 87], 20, false);
     
     this.instantTransition = true; // When player spawns, camera transition should be instant
     
@@ -254,7 +271,7 @@ Player.prototype.Shoot = function ()
         if (angleToMouse > 315)
             anim = 'right';
 
-        player.sprite.animations.play('cast' + anim);
+        player.sprite.animations.play('shoot' + anim);
     }
 }
 
@@ -363,6 +380,7 @@ function PlayerMeleeAttack(x, y, image, projsize)
     this.attackStartTime = game.time.now;
     this.attackEndTime = game.time.now;
     this.startAngle = 0;
+    this.attacking = false;
 
     // Properties - Alter these in base class
     this.attackTime = 200;
@@ -410,7 +428,11 @@ PlayerMeleeAttack.prototype.Update = function (x, y)
 {
     if (game.time.now > this.attackEndTime)
     {
-        this.ResetProjectiles(false, 0, 0)
+        if (this.attacking)
+        {
+            this.attacking = false;
+            this.ResetProjectiles(false, 0, 0)
+        }
         return;
     }
 
@@ -480,6 +502,8 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
             anim = 'right';
 
         player.sprite.animations.play('slash' + anim);
+
+        this.attacking = true;
     }
     else
     {
