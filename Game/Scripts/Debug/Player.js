@@ -18,15 +18,20 @@ Player.prototype.Init = function ()
     this.sprite.object = this;
     this.sprite.body.setSize(24, 24, 0, 8);
 
+
+
+    this.shootTimerInterval = 500; // milliseconds between attacks
+    this.shootTimerFramerate = 13 / (this.shootTimerInterval / 1000);
+
     this.sprite.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
     this.sprite.animations.add('left', [9, 10, 11, 12, 13, 14, 15, 16, 17], 20, true);
     this.sprite.animations.add('down', [18, 19, 20, 21, 22, 23, 24, 25, 26], 20, true);
     this.sprite.animations.add('right', [27, 28, 29, 30, 31, 32, 33, 34, 35], 20, true);
 
-    this.sprite.animations.add('shootup', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48], 30, false);
-    this.sprite.animations.add('shootleft', [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61], 30, false);
-    this.sprite.animations.add('shootdown', [62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74], 30, false);
-    this.sprite.animations.add('shootright', [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], 30, false);
+    this.sprite.animations.add('shootup', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48], this.shootTimerFramerate, false);
+    this.sprite.animations.add('shootleft', [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61], this.shootTimerFramerate, false);
+    this.sprite.animations.add('shootdown', [62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74], this.shootTimerFramerate, false);
+    this.sprite.animations.add('shootright', [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87], this.shootTimerFramerate, false);
 
     this.sprite.animations.add('death', [88, 89, 90, 91, 92, 93], 2, false);
 
@@ -34,21 +39,6 @@ Player.prototype.Init = function ()
     this.sprite.animations.add('slashleft', [100, 101, 102, 103, 104, 105], 20, false);
     this.sprite.animations.add('slashdown', [106, 107, 108, 109, 110, 111], 20, false);
     this.sprite.animations.add('slashright', [112, 113, 114, 115, 116, 117], 20, false);
-
-    //this.sprite.animations.add('castup', [0, 1, 2, 3, 4, 5, 6], 14, false);
-    //this.sprite.animations.add('castleft', [7, 8, 9, 10, 11, 12, 13], 14, false);
-    //this.sprite.animations.add('castdown', [14, 15, 16, 17, 18, 19, 20], 14, false);
-    //this.sprite.animations.add('castright', [21, 22, 23, 24, 25, 26, 27], 14, false);
-
-    //this.sprite.animations.add('up', [28, 29, 30, 31, 32, 33, 34, 35, 36], 20, true);
-    //this.sprite.animations.add('left', [37, 38, 39, 40, 41, 42, 43, 44, 45], 20, true);
-    //this.sprite.animations.add('down', [46, 47, 48, 49, 50, 51, 52, 53, 54], 20, true);
-    //this.sprite.animations.add('right', [55, 56, 57, 58, 59, 60, 61, 62, 63], 20, true);
-
-    //this.sprite.animations.add('slashup', [64, 65, 66, 67, 68, 69], 20, false);
-    //this.sprite.animations.add('slashleft', [70, 71, 72, 73, 74, 75], 20, false);
-    //this.sprite.animations.add('slashdown', [76, 77, 78, 79, 80, 81], 20, false);
-    //this.sprite.animations.add('slashright', [82, 83, 84, 85, 86, 87], 20, false);
     
     this.instantTransition = true; // When player spawns, camera transition should be instant
     
@@ -65,11 +55,12 @@ Player.prototype.Init = function ()
 
     // set up shooting
     this.shootTimerNext = game.time.now;
-    this.shootTimerInterval = 500; // milliseconds between attacks
     this.bullets = groupActors.add(new Phaser.Group(game, groupActors));
     this.bullets.enableBody = true;
     this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    this.bullets.createMultiple(50, 'fireball');
+    this.bullets.createMultiple(50, 'arrow');
+    this.bullets.setAll('anchor.x', 0.5);
+    this.bullets.setAll('anchor.y', 0.5);
 
     // set up melee
     this.slashTimerNext = game.time.now;
@@ -254,10 +245,9 @@ Player.prototype.Shoot = function ()
     if (game.time.now > this.shootTimerNext)
     {
         this.shootTimerNext = game.time.now + this.shootTimerInterval;
-        var bullet = this.bullets.getFirstDead();
-        bullet.reset(this.sprite.x, this.sprite.y);
-        bullet.anchor.setTo(0.5, 0.5);
-        game.physics.arcade.moveToPointer(bullet, 750);
+
+
+        var that = this;
 
         var pointer = game.input.activePointer;
         var angleToMouse = (new Vector(pointer.worldX - player.sprite.x, pointer.worldY - player.sprite.y)).Angle(true);
@@ -270,6 +260,17 @@ Player.prototype.Shoot = function ()
             anim = 'up';
         if (angleToMouse > 315)
             anim = 'right';
+
+        setTimeout(function ()
+        {
+            var bullet = that.bullets.getFirstDead();
+            bullet.reset(that.sprite.x, that.sprite.y - 10);
+            bullet.body.setSize(4, 4, 0, 0);
+            bullet.angle = angleToMouse;
+            game.physics.arcade.moveToPointer(bullet, 750);
+        }, this.shootTimerInterval * 0.75); // maybe extract 75% variable
+
+
 
         player.sprite.animations.play('shoot' + anim);
     }
@@ -486,7 +487,7 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
         }
 
         this.sprite.angle = this.startAngle * 180 / Math.PI;
-        this.sprite.visible = true;
+        //this.sprite.visible = true;
         this.sprite.x = x;
         this.sprite.y = y;
 

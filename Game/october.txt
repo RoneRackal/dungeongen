@@ -41,8 +41,13 @@ Graphics
  - Player Graphics
    + Add basic player graphics with animations
    + Sword attacking animation
-   - Player initial clothing items
-   - Player hair
+   + Player initial clothing items
+   - New animations
+     + Projectile graphic
+     + Make attack speed of ranged dependant on 1 variable
+     - Make attack projectile spawn at a different time
+     - Make melee attack speed dependant on 1 variable
+     - Remove sword sprite completely
 
 Bugs
  - Performance issues + memory leaks, make sure things are destroyed properly
@@ -62,4 +67,3 @@ Refactoring
  - Player init seperation
  - Monster init seperation
 
-12/48

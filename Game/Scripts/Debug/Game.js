@@ -125,7 +125,7 @@ function GameManager()
         // Actors
         //game.load.image('player', 'Sprites/Actors/player.png');
         game.load.image('bullet', 'Sprites/Actors/bullet.png');
-        game.load.image('fireball', 'Sprites/Actors/fireball.png');
+        game.load.image('arrow', 'Sprites/Actors/arrow.png');
         game.load.image('swordattack', 'Sprites/Actors/sword.png');
 
         game.load.spritesheet('player_large', 'Sprites/Actors/playerlarge.png', 192, 192, 118);

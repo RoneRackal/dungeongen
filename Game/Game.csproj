@@ -81,6 +81,7 @@
     <Content Include="Scripts\easystar-0.2.0.min.js" />
     <Content Include="Scripts\phaser.min.js" />
     <Content Include="october.txt" />
+    <Content Include="Sprites\Actors\arrow.png" />
     <Content Include="Sprites\Actors\bat.png" />
     <Content Include="Sprites\Actors\batattack.png" />
     <Content Include="Sprites\Actors\bullet.png" />
