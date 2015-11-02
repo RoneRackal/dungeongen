@@ -246,11 +246,12 @@ Player.prototype.Shoot = function ()
     {
         this.shootTimerNext = game.time.now + this.shootTimerInterval;
 
-
         var that = this;
 
         var pointer = game.input.activePointer;
-        var angleToMouse = (new Vector(pointer.worldX - player.sprite.x, pointer.worldY - player.sprite.y)).Angle(true);
+        var pX = pointer.worldX;
+        var pY = pointer.worldY;
+        var angleToMouse = (new Vector(pX - player.sprite.x, pY - player.sprite.y)).Angle(true);
         var anim = 'right';
         if (angleToMouse > 45)
             anim = 'down';
@@ -267,7 +268,7 @@ Player.prototype.Shoot = function ()
             bullet.reset(that.sprite.x, that.sprite.y - 10);
             bullet.body.setSize(4, 4, 0, 0);
             bullet.angle = angleToMouse;
-            game.physics.arcade.moveToPointer(bullet, 750);
+            game.physics.arcade.moveToXY(bullet, pX, pY, 750);
         }, this.shootTimerInterval * 0.75); // maybe extract 75% variable
 
 
