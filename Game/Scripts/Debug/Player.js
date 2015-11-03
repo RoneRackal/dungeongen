@@ -473,6 +473,32 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
 
     if (alive)
     {
+        // Snap angle and figure out which animation to use
+        var angleDegrees = angleToMouse / Math.PI * 180;
+
+        var anim = 'right';
+        angleToMouse = 0;
+        if (angleDegrees > 45)
+        {
+            anim = 'down';
+            angleToMouse = Math.PI / 2;
+        }
+        if (angleDegrees > 135)
+        {
+            anim = 'left';
+            angleToMouse = Math.PI;
+        }
+        if (angleDegrees > 225)
+        {
+            anim = 'up';
+            angleToMouse = Math.PI * 1.5;
+        }
+        if (angleDegrees > 315)
+        {
+            anim = 'right';
+            angleToMouse = 0;
+        }
+
         this.attackStartTime = game.time.now;
         this.attackEndTime = this.attackStartTime + this.attackTime;
         this.startAngle = angleToMouse - (this.arcAngle / 2); // Do plus for other direction
@@ -489,17 +515,6 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
         //this.sprite.visible = true;
         this.sprite.x = x;
         this.sprite.y = y;
-
-        var angleDegrees = angleToMouse / Math.PI * 180;
-        var anim = 'right';
-        if (angleDegrees > 45)
-            anim = 'down';
-        if (angleDegrees > 135)
-            anim = 'left';
-        if (angleDegrees > 225)
-            anim = 'up';
-        if (angleDegrees > 315)
-            anim = 'right';
 
         player.sprite.animations.play('slash' + anim);
 

@@ -46,7 +46,7 @@ Graphics
      + Projectile graphic
      + Make attack speed of ranged dependant on 1 variable
      + Make attack projectile spawn at a different time
-     - Snap direction of melee attack
+     + Snap direction of melee attack
      - Alter rotational direction of melee attack depending on attack direction
      - Make melee attack speed dependant on 1 variable
      - Remove sword sprite completely
