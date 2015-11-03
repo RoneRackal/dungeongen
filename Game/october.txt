@@ -42,14 +42,13 @@ Graphics
    + Add basic player graphics with animations
    + Sword attacking animation
    + Player initial clothing items
-   - New animations
+   + New animations
      + Projectile graphic
      + Make attack speed of ranged dependant on 1 variable
      + Make attack projectile spawn at a different time
      + Snap direction of melee attack
      + Alter rotational direction of melee attack depending on attack direction
-     - Make melee attack speed dependant on 1 variable
-     - Remove sword sprite completely
+     + Remove sword sprite completely
 
 Bugs
  - Performance issues + memory leaks, make sure things are destroyed properly

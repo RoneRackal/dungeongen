@@ -65,7 +65,7 @@ Player.prototype.Init = function ()
     // set up melee
     this.slashTimerNext = game.time.now;
     this.slashTimerInterval = 500; // milliseconds between attacks
-    this.playerMeleeAttack = new PlayerMeleeAttack(0, 0, 'swordattack')
+    this.playerMeleeAttack = new PlayerMeleeAttack(0, 0)
     
 
     this.lastQ = false;
@@ -365,9 +365,8 @@ Player.prototype.PlayerProjHitMonster = function (actor, playerProj)
     }
 }
 
-function PlayerMeleeAttack(x, y, image, projsize)
+function PlayerMeleeAttack(x, y, projsize)
 {
-    this.image = image; // Image to show for the attack, can be blank for no image
     this.projectiles = []; // Storage for projectiles which are used in this attack
     this.projectileSize = projsize || 8;
 
@@ -389,11 +388,6 @@ function PlayerMeleeAttack(x, y, image, projsize)
     this.arcAngle = Math.PI / 1.5;
     this.damage = 4;
     this.height = 15;
-
-    if (this.image)
-    {
-        this.InitSprite(x, y);
-    }
 }
 
 PlayerMeleeAttack.prototype.HitMonster = function (monster)
@@ -415,13 +409,6 @@ PlayerMeleeAttack.prototype.HitMonster = function (monster)
         monster.KnockBack(1000);
         monster.TakeDamage(this.damage);
     }
-}
-
-PlayerMeleeAttack.prototype.InitSprite = function (x, y)
-{
-    this.sprite = groupActors.create(x, y, this.image);
-    this.sprite.anchor.setTo(0.5, 0.5);
-    this.sprite.object = this;
 }
 
 PlayerMeleeAttack.prototype.Update = function (x, y)
@@ -449,11 +436,6 @@ PlayerMeleeAttack.prototype.Update = function (x, y)
     {
         swordAngle = this.startAngle - (this.arcAngle * percentAttack);
     }
-    
-
-    this.sprite.angle = swordAngle * 180 / Math.PI;
-    this.sprite.x = x;
-    this.sprite.y = y;
 
     for (var i = 0; i < this.amountOfProjectiles; i++)
     {
@@ -536,11 +518,6 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
             this.projectiles[i].y = y + l * Math.sin(this.startAngle);
         }
 
-        this.sprite.angle = this.startAngle * 180 / Math.PI;
-        //this.sprite.visible = true;
-        this.sprite.x = x;
-        this.sprite.y = y;
-
         player.sprite.animations.play('slash' + anim);
 
         this.attacking = true;
@@ -551,7 +528,5 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
         {
             this.projectiles[i].exists = false;
         }
-
-        this.sprite.visible = false;
     }
 }
