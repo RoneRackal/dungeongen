@@ -20,7 +20,7 @@ Player.prototype.Init = function ()
 
     // shooting
     this.shootTimerInterval = 500; // milliseconds between attacks
-    this.shootTimerFramerate = 13 / (this.shootTimerInterval / 1000);
+    this.shootTimerFramerate = Math.floor(13 / (this.shootTimerInterval / 1000));
     this.shootDelayPercentage = 0.75;
 
     this.sprite.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
