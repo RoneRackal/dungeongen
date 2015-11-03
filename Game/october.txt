@@ -47,7 +47,7 @@ Graphics
      + Make attack speed of ranged dependant on 1 variable
      + Make attack projectile spawn at a different time
      + Snap direction of melee attack
-     - Alter rotational direction of melee attack depending on attack direction
+     + Alter rotational direction of melee attack depending on attack direction
      - Make melee attack speed dependant on 1 variable
      - Remove sword sprite completely
 
@@ -62,6 +62,7 @@ Bugs
  - Rubble spawns blocking doors
  - Rubble spawns in rubble
  - Fix A*
+ - Arrow direction needs to be based on current arrow direction instead of fire time
 
 Refactoring
  - Collisions, do this seperately from player

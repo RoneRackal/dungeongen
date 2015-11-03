@@ -373,14 +373,13 @@ function PlayerMeleeAttack(x, y, image, projsize)
 
     this.active = false;
 
-    this.position = new Vector(x, y);
-
     this.alreadyHitMonsters = [];
 
     this.attackStartTime = game.time.now;
     this.attackEndTime = game.time.now;
     this.startAngle = 0;
     this.attacking = false;
+    this.clockwise = false;
 
     // Properties - Alter these in base class
     this.attackTime = 200;
@@ -389,6 +388,7 @@ function PlayerMeleeAttack(x, y, image, projsize)
     this.startLength = 10;
     this.arcAngle = Math.PI / 1.5;
     this.damage = 4;
+    this.height = 15;
 
     if (this.image)
     {
@@ -426,6 +426,8 @@ PlayerMeleeAttack.prototype.InitSprite = function (x, y)
 
 PlayerMeleeAttack.prototype.Update = function (x, y)
 {
+    y -= this.height;
+    
     if (game.time.now > this.attackEndTime)
     {
         if (this.attacking)
@@ -437,7 +439,17 @@ PlayerMeleeAttack.prototype.Update = function (x, y)
     }
 
     var percentAttack = (game.time.now - this.attackStartTime) / this.attackTime;
-    var swordAngle = this.startAngle + (this.arcAngle * percentAttack); // Do minus for other direction
+
+    var swordAngle;
+    if (this.clockwise)
+    {
+        swordAngle = this.startAngle + (this.arcAngle * percentAttack); // Do minus for other direction
+    }
+    else
+    {
+        swordAngle = this.startAngle - (this.arcAngle * percentAttack);
+    }
+    
 
     this.sprite.angle = swordAngle * 180 / Math.PI;
     this.sprite.x = x;
@@ -453,6 +465,7 @@ PlayerMeleeAttack.prototype.Update = function (x, y)
 
 PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
 {
+    y -= this.height;
     this.active = alive;
     this.alreadyHitMonsters.empty();
 
@@ -482,26 +495,38 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
         {
             anim = 'down';
             angleToMouse = Math.PI / 2;
+            this.clockwise = false;
         }
         if (angleDegrees > 135)
         {
             anim = 'left';
             angleToMouse = Math.PI;
+            this.clockwise = true;
         }
         if (angleDegrees > 225)
         {
             anim = 'up';
             angleToMouse = Math.PI * 1.5;
+            this.clockwise = true;
         }
         if (angleDegrees > 315)
         {
             anim = 'right';
             angleToMouse = 0;
+            this.clockwise = false;
         }
 
         this.attackStartTime = game.time.now;
         this.attackEndTime = this.attackStartTime + this.attackTime;
-        this.startAngle = angleToMouse - (this.arcAngle / 2); // Do plus for other direction
+
+        if (this.clockwise)
+        {
+            this.startAngle = angleToMouse - (this.arcAngle / 2); // Do plus for other direction
+        }
+        else
+        {
+            this.startAngle = angleToMouse + (this.arcAngle / 2);
+        }
 
         for (var i = 0; i < this.amountOfProjectiles; i++)
         {
