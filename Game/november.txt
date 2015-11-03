@@ -1,0 +1,36 @@
+﻿Boss
+ - Graphics
+   - Boss door sprite
+   - Boss key sprite
+   - Boss simple sprite
+   - Next-area sprite
+ - Final room objective not only triggers doors but triggers next-area appearance
+ - Next area appearance takes time before it can be used
+ - Boss death tied with room objective
+ - Boss has special AI
+ - Boss HP meter on HUD
+
+Generation Algorithm
+ - Boss key can spawn in any room
+ - First room is not locked with key in that room
+
+Graphics
+ - Door colour particle sprite
+ - Door colours - star exploding particles
+
+Refactoring
+ - Collisions, do this seperately from player
+ - Monster
+   - Monster init seperation
+   - Monster Attack
+
+Bugs
+ - Monster attack remains after monster dies
+ - Arrow direction needs to be based on current arrow direction instead of fire time
+ - Key spawns in rubble
+ - You spawn in rubble
+ - Rubble spawns in walls
+ - Rubble spawns blocking doors
+ - Rubble spawns in rubble
+
+0/25

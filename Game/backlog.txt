@@ -1,0 +1,24 @@
+﻿Puzzles
+- Simon says puzzle room
+- Path follow puzzle room (mines on ground, visible at start, deactivate at end of safe path)
+
+Minimap
+ - Minimap sprites
+ - Toggle minimap on and off
+ - Minimap based on map generated
+ - Minimap explored as you enter new rooms
+ - Coloured doors displayed on minimap
+ - Bonus rooms displayed differently on minimap
+
+Generation Algorithm
+ - Bonus rooms (added at the end of generation, attached to any room except boss room)
+
+Bugs
+ - Performance issues + memory leaks, make sure things are destroyed properly
+ - A* less often, proper stay-on-path
+ - Monsters possibly avoid eachother?
+ - Fix A*
+
+Refactoring
+ - Player init seperation
+

@@ -1,13 +1,4 @@
-﻿Boss
- - Boss door sprite
- - Boss key sprite
- - Final room objective not only triggers doors but triggers next-area appearance
- - Next-area sprite
- - Next area appearance takes time before it can be used
- - Boss death tied with room objective
- - Boss has special AI
- - Boss HP meter on HUD
-
+﻿
 Loot System
  + Separate out loot system
  + Register loot to system with a percent chance to drop
@@ -17,28 +8,13 @@ Loot System
    + Add coin counter to HUD
    + Coin sprites
 
-Minimap
- - Minimap sprites
- - Toggle minimap on and off
- - Minimap based on map generated
- - Minimap explored as you enter new rooms
- - Coloured doors displayed on minimap
- - Bonus rooms displayed differently on minimap
-
-Generation Algorithm
- - Boss key can spawn in any room
- - First room is not locked with key in that room
- - Bonus rooms (added at the end of generation, attached to any room except boss room)
-
 Monsters
  + Add extra melee monster
- - Add ranged monster
 
 Graphics
  + Animated slime bobbing up and down
- - Door colours
  + Use darker tileset
- - Player Graphics
+ + Player Graphics
    + Add basic player graphics with animations
    + Sword attacking animation
    + Player initial clothing items
@@ -49,23 +25,3 @@ Graphics
      + Snap direction of melee attack
      + Alter rotational direction of melee attack depending on attack direction
      + Remove sword sprite completely
-
-Bugs
- - Performance issues + memory leaks, make sure things are destroyed properly
- - A* less often, proper stay-on-path
- - Monsters possibly avoid eachother?
- - Monster attack remains after monster dies
- - Key spawns in rubble
- - You spawn in rubble
- - Rubble spawns in walls
- - Rubble spawns blocking doors
- - Rubble spawns in rubble
- - Fix A*
- - Arrow direction needs to be based on current arrow direction instead of fire time
-
-Refactoring
- - Collisions, do this seperately from player
- - Monster Attack
- - Player init seperation
- - Monster init seperation
-

@@ -65,6 +65,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="backlog.txt" />
+    <Content Include="november.txt" />
     <Content Include="Scripts\Debug\LootManager.js" />
     <Content Include="Scripts\Debug\MonsterAttacks.js" />
     <Content Include="Scripts\phaser.js" />
