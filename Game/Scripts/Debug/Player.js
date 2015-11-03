@@ -18,10 +18,10 @@ Player.prototype.Init = function ()
     this.sprite.object = this;
     this.sprite.body.setSize(24, 24, 0, 8);
 
-
-
+    // shooting
     this.shootTimerInterval = 500; // milliseconds between attacks
     this.shootTimerFramerate = 13 / (this.shootTimerInterval / 1000);
+    this.shootDelayPercentage = 0.75;
 
     this.sprite.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
     this.sprite.animations.add('left', [9, 10, 11, 12, 13, 14, 15, 16, 17], 20, true);
@@ -42,7 +42,7 @@ Player.prototype.Init = function ()
     
     this.instantTransition = true; // When player spawns, camera transition should be instant
     
-    this.speed = 200;//200;
+    this.speed = 200;
 
     this.health = 12;
     this.maxHealth = 12;
@@ -269,9 +269,7 @@ Player.prototype.Shoot = function ()
             bullet.body.setSize(4, 4, 0, 0);
             bullet.angle = angleToMouse;
             game.physics.arcade.moveToXY(bullet, pX, pY, 750);
-        }, this.shootTimerInterval * 0.75); // maybe extract 75% variable
-
-
+        }, this.shootTimerInterval * this.shootDelayPercentage);
 
         player.sprite.animations.play('shoot' + anim);
     }
