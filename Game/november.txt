@@ -15,8 +15,8 @@ Generation Algorithm
  - First room is not locked with key in that room
 
 Graphics
- - Door colour particle sprite
- - Door colours - star exploding particles
+ + Door colour particle sprite
+ + Door colours - star exploding particles
 
 Refactoring
  - Collisions, do this seperately from player
@@ -33,4 +33,4 @@ Bugs
  - Rubble spawns blocking doors
  - Rubble spawns in rubble
 
-1/25
+3/25

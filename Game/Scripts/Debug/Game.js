@@ -146,6 +146,9 @@ function GameManager()
         // Projectiles
         game.load.spritesheet('slimeattack', 'Sprites/Actors/slimeattack.png', 96, 96);
         game.load.spritesheet('batattack', 'Sprites/Actors/batattack.png', 96, 96);
+
+        // Particles
+        game.load.spritesheet('sparkle', 'Sprites/Particles/sparkle.png', 32, 32);
         
         // Common
         game.load.image('block64', 'Sprites/Common/block64.png');
@@ -195,8 +198,6 @@ function GameManager()
         game.load.image('debris_small2', 'Sprites/Dungeon/debris_small_1.png');
 
         // Doors
-        game.load.image('lock', 'Sprites/Dungeon/lock.png');
-
         game.load.image('door_n', 'Sprites/Dungeon/doorn.png');
         game.load.image('door_e', 'Sprites/Dungeon/doore.png');
         game.load.image('door_s', 'Sprites/Dungeon/doors.png');

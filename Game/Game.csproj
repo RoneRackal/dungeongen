@@ -89,6 +89,7 @@
     <Content Include="Sprites\Actors\bullet.png" />
     <Content Include="Sprites\Actors\fireball.png" />
     <Content Include="Sprites\Actors\playerlarge.png" />
+    <Content Include="Sprites\Particles\sparkle.png" />
     <Content Include="Sprites\PickupItems\key.png" />
     <Content Include="Sprites\PickupItems\pickupheart.png" />
     <Content Include="Sprites\Actors\player.png" />

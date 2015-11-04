@@ -10,57 +10,84 @@ Door.prototype.Init = function (roomX, roomY)
 {
     // TODO: Add logic for creating coloured lock sprite
     
-    // Figure out the coords for door sprites
-    var x;
-    var y;
     
     // This is used to create blocks on the solidMap
     var returnPos;
     
+    // Figure out the coords for door sprites
     if (this.direction == 'n')
     {
-        x = roomX + gameManager.tileSize * this.position;
-        y = roomY;
+        this.x = roomX + gameManager.tileSize * this.position;
+        this.y = roomY;
+        this.height = gameManager.tileSize;
+        this.width = gameManager.tileSize * 2;
         returnPos = { x: this.position, y: 0 };
     }
     else if (this.direction == 'e')
     {
-        x = roomX + gameManager.tileSize * (gameManager.roomSize - 1);
-        y = roomY + gameManager.tileSize * this.position;
+        this.x = roomX + gameManager.tileSize * (gameManager.roomSize -1);
+        this.y = roomY + gameManager.tileSize * this.position;
+        this.height = gameManager.tileSize * 2;
+        this.width = gameManager.tileSize;
         returnPos = { x: gameManager.roomSize - 1, y: this.position };
     }
     else if (this.direction == 's')
     {
-        x = roomX + gameManager.tileSize * this.position;
-        y = roomY + gameManager.tileSize * (gameManager.roomSize - 1);
+        this.x = roomX + gameManager.tileSize * this.position;
+        this.y = roomY + gameManager.tileSize * (gameManager.roomSize -1);
+        this.height = gameManager.tileSize;
+        this.width = gameManager.tileSize * 2;
         returnPos = { x: this.position, y: gameManager.roomSize - 1 };
     }
     else if (this.direction == 'w')
     {
-        x = roomX;
-        y = roomY + gameManager.tileSize * this.position;
+        this.x = roomX;
+        this.y = roomY + gameManager.tileSize * this.position;
+        this.height = gameManager.tileSize * 2;
+        this.width = gameManager.tileSize;
         returnPos = { x: 0, y: this.position };
     }
     
-    this.spriteClosedDoor = groupDungeon.create(x, y, 'door_' + this.direction);
+    this.spriteClosedDoor = groupDungeon.create(this.x, this.y, 'door_' + this.direction);
     
-    this.spriteOpenDoor = groupDungeonOverhead.create(x, y, 'door_' + this.direction + '_open');
+    this.spriteOpenDoor = groupDungeonOverhead.create(this.x, this.y, 'door_' + this.direction + '_open');
     
-    this.spriteBlock = groupUnderBlockLayer.create(x, y, 'block64');
+    this.spriteBlock = groupUnderBlockLayer.create(this.x, this.y, 'block64');
     this.spriteBlock.body.immovable = true;
     this.spriteBlock.object = this;
     
     if (this.lock)
     {
-        this.spriteLock = groupDungeonOverhead.create(x + gameManager.tileSize * 0.5, y + gameManager.tileSize * 0.5, 'lock');
-        this.spriteLock.tint = this.lock;
-        this.spriteLock.anchor.x = 0.5;
-        this.spriteLock.anchor.y = 0.5;
+        this.lockParticles = groupDungeonOverhead.add(new Phaser.Group(game, groupDungeonOverhead));
+        this.lockParticles.createMultiple(10, 'sparkle');
+        this.lockParticles.setAll('anchor.x', 0.5);
+        this.lockParticles.setAll('anchor.y', 0.5);
+        this.lockParticles.setAll('scale.x', 0.5);
+        this.lockParticles.setAll('scale.y', 0.5);
+        this.lockParticles.setAll('tint', this.lock);
+        this.lockParticles.callAll('animations.add', 'animations', 'go', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, false);
+
+        this.particleSpawnTimer = game.time.now;
+        this.particleSpawnRate = 300; // Milliseconds for next particle spawn
     }
     
     this.Open();
     
     return returnPos;
+}
+
+Door.prototype.Update = function ()
+{
+    if (this.lockParticles && this.lock)
+    {
+        if (game.time.now >= this.particleSpawnTimer)
+        {
+            this.particleSpawnTimer = game.time.now + this.particleSpawnRate;
+            var particle = this.lockParticles.getFirstDead();
+            particle.reset(this.x +Utility.Random(0, gameManager.tileSize), this.y +Utility.Random(0, gameManager.tileSize));
+            particle.animations.play('go', 10, false, true);
+        }
+    }
 }
 
 // Opens the door, if door is also unlocked it will delete the blocking object and change the sprite
@@ -86,7 +113,6 @@ Door.prototype.Close = function ()
 
 Door.prototype.Unlock = function ()
 {
-    this.spriteLock.visible = false;
     this.lock = null;
     
     if (this.open)
@@ -595,5 +621,10 @@ Room.prototype.Update = function ()
     for (var i = 0; i < this.monsters.length; i++)
     {
         this.monsters[i].Update();
+    }
+
+    for (var i = 0; i < this.doors.length; i++)
+    {
+        this.doors[i].Update();
     }
 }
