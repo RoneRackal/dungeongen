@@ -26,11 +26,11 @@ Refactoring
 
 Bugs
  - Monster attack remains after monster dies
- - Arrow direction needs to be based on current arrow direction instead of fire time
+ + Arrow direction needs to be based on current arrow direction instead of fire time
  - Key spawns in rubble
  - You spawn in rubble
  - Rubble spawns in walls
  - Rubble spawns blocking doors
  - Rubble spawns in rubble
 
-0/25
+1/25

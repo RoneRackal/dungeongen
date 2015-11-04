@@ -267,7 +267,7 @@ Player.prototype.Shoot = function ()
             var bullet = that.bullets.getFirstDead();
             bullet.reset(that.sprite.x, that.sprite.y - 10);
             bullet.body.setSize(4, 4, 0, 0);
-            bullet.angle = angleToMouse;
+            bullet.angle = (new Vector(pX - that.sprite.x, pY - that.sprite.y)).Angle(true);
             game.physics.arcade.moveToXY(bullet, pX, pY, 750);
         }, this.shootTimerInterval * this.shootDelayPercentage);
 
