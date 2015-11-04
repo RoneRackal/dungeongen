@@ -547,8 +547,8 @@ Room.prototype.CreateDebris = function ()
     
     for (var i = 0; i < amountOfDebris; i++)
     {
-        var x = Utility.RandomInt(gameManager.roomSize);
-        var y = Utility.RandomInt(gameManager.roomSize);
+        var x = Utility.RandomInt(2, gameManager.roomSize - 2);
+        var y = Utility.RandomInt(2, gameManager.roomSize - 2);
         
         if (this.solidMap[y * 2][x * 2] === 0)
         {
@@ -612,7 +612,10 @@ Room.prototype.Init = function ()
         this.solidMap[pos.y * 2 + 1][pos.x * 2 + 1] = 1;
     }
     
-    this.CreateDebris();
+    if (!this.startRoom)
+    {
+        this.CreateDebris();
+    }
 }
 
 Room.prototype.Update = function ()
