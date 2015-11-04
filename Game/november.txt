@@ -29,8 +29,8 @@ Bugs
  + Arrow direction needs to be based on current arrow direction instead of fire time
  - Key spawns in rubble
  - You spawn in rubble
- - Rubble spawns in walls
+ + Rubble spawns in walls
  - Rubble spawns blocking doors
- - Rubble spawns in rubble
+ + Rubble spawns in rubble
 
-3/25
+5/25
