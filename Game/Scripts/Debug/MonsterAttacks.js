@@ -13,17 +13,21 @@ function MonsterAttack(x, y, image, projsize)
 
     this.position = new Vector(x, y);
 
-    // Properties - Alter these in base class
-    this.amountOfProjectiles = 9;
-    this.coneAngle = Math.PI / 2;
-    this.projectileSpeed = 125;
-    this.projectileStartDistance = 16;
-    this.damage = 1;
+    this.InitProperties();
 
     if (this.image)
     {
         this.InitSprite(x, y);
     }
+}
+
+MonsterAttack.prototype.InitProperties = function ()
+{
+    this.amountOfProjectiles = 9;
+    this.coneAngle = Math.PI / 2;
+    this.projectileSpeed = 125;
+    this.projectileStartDistance = 16;
+    this.damage = 1;
 }
 
 MonsterAttack.prototype.InitSprite = function (x, y)

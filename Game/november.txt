@@ -20,9 +20,9 @@ Graphics
 
 Refactoring
  + Collisions, do this seperately from player
- - Monster
+ + Monster
    + Monster init seperation
-   - Monster Attack
+   + Monster Attack
 
 Bugs
  - Monster attack remains after monster dies
@@ -33,4 +33,4 @@ Bugs
  + Rubble spawns blocking doors
  + Rubble spawns in rubble
 
-9/25
+11/25

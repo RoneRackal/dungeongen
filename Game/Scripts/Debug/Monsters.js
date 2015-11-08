@@ -3,7 +3,7 @@
 //  Used as a base class for monsters
 ////
 
-function Monster(x, y, room, image)
+function Monster(x, y, room, image, attackimage)
 {
     this.image = image;
     this.room = room;
@@ -12,7 +12,7 @@ function Monster(x, y, room, image)
     this.knockedBack = false;
     this.room.RegisterMonster(this);
 
-    this.monsterAttack = new MonsterAttack(x, y, 'batattack');
+    this.monsterAttack = new MonsterAttack(x, y, attackimage);
     this.monsterAttack.ResetProjectiles(false, x, y);
     this.readyToAttack = true;
     this.attackTimerNext = game.time.now;
@@ -193,9 +193,9 @@ Monster.prototype.Attack = function ()
 //  Animated Monster
 ////
 
-function AnimatedMonster(x, y, room, image) // extends Monster
+function AnimatedMonster(x, y, room, image, attackimage) // extends Monster
 {
-    Monster.call(this, x, y, room, image);
+    Monster.call(this, x, y, room, image, attackimage);
 }
 AnimatedMonster.prototype = Object.create(Monster.prototype);
 AnimatedMonster.prototype.constructor = AnimatedMonster;
@@ -243,7 +243,9 @@ AnimatedMonster.prototype.Update = function ()
 
 function Slime(x, y, room) // extends AnimatedMonster
 {
-    AnimatedMonster.call(this, x, y, room, 'slime');
+    AnimatedMonster.call(this, x, y, room, 'slime', 'slimeattack');
+
+    this.monsterAttack.damage = 2;
 }
 Slime.prototype = Object.create(AnimatedMonster.prototype);
 Slime.prototype.constructor = Slime;
@@ -272,7 +274,7 @@ Slime.prototype.OnDeath = function ()
 
 function Bat(x, y, room) // extends AnimatedMonster
 {
-    AnimatedMonster.call(this, x, y, room, 'bat');
+    AnimatedMonster.call(this, x, y, room, 'bat', 'batattack');
 }
 Bat.prototype = Object.create(AnimatedMonster.prototype);
 Bat.prototype.constructor = Bat;
