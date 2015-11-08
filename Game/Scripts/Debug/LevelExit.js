@@ -8,3 +8,4 @@ function LevelExit(x, y)
     this.sprite = groupLevelEntities.create(x, y, 'levelexit');
     this.sprite.object = this;
 }
+

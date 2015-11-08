@@ -86,3 +86,4 @@ MonsterAttack.prototype.ResetProjectiles = function (alive, x, y)
         this.sprite.visible = false;
     }
 }
+

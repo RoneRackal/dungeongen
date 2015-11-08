@@ -110,9 +110,10 @@ function GameManager()
         groupHUD = game.add.group();
         groupHUD.fixedToCamera = true;
             
-            // Minimap, inside HUD group
-            groupMinimap = groupHUD.add(new Phaser.Group(game));
+        // Minimap, inside HUD group
+        groupMinimap = groupHUD.add(new Phaser.Group(game));
 
+        cm = new CollisionsManager();
         player = new Player();
         hud = new HUD();
         lootManager = new LootManager();
@@ -302,6 +303,7 @@ function GameManager()
 
     this.Update = function ()
     {
+        cm.CheckCollisions();
         player.Update();
         dungeon.Update();
     }
@@ -312,3 +314,4 @@ function GameManager()
         dungeon.Draw();
     }
 }
+

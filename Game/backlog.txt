@@ -1,4 +1,7 @@
-﻿Puzzles
+﻿
+Sounds
+
+Puzzles
 - Simon says puzzle room
 - Path follow puzzle room (mines on ground, visible at start, deactivate at end of safe path)
 

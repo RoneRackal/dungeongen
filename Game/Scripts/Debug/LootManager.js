@@ -49,3 +49,4 @@ LootManager.prototype.DropLoot = function (x, y, monsterLevel)
         }
     }
 }
+

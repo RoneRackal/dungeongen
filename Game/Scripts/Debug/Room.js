@@ -631,3 +631,4 @@ Room.prototype.Update = function ()
         this.doors[i].Update();
     }
 }
+

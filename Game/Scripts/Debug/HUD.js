@@ -111,3 +111,4 @@ HUD.prototype.ShowMinimap = function ()
 {
 
 }
+

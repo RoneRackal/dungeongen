@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="backlog.txt" />
     <Content Include="november.txt" />
+    <Content Include="Scripts\Debug\CollisionsManager.js" />
     <Content Include="Scripts\Debug\LootManager.js" />
     <Content Include="Scripts\Debug\MonsterAttacks.js" />
     <Content Include="Scripts\phaser.js" />
@@ -86,16 +87,12 @@
     <Content Include="Sprites\Actors\arrow.png" />
     <Content Include="Sprites\Actors\bat.png" />
     <Content Include="Sprites\Actors\batattack.png" />
-    <Content Include="Sprites\Actors\bullet.png" />
-    <Content Include="Sprites\Actors\fireball.png" />
     <Content Include="Sprites\Actors\playerlarge.png" />
     <Content Include="Sprites\Particles\sparkle.png" />
     <Content Include="Sprites\PickupItems\key.png" />
     <Content Include="Sprites\PickupItems\pickupheart.png" />
-    <Content Include="Sprites\Actors\player.png" />
     <Content Include="Sprites\Actors\slime.png" />
     <Content Include="Sprites\Actors\slimeattack.png" />
-    <Content Include="Sprites\Actors\sword.png" />
     <Content Include="Sprites\Common\block64.png" />
     <Content Include="Sprites\Common\block8.png" />
     <Content Include="Sprites\Common\circle64.png" />
@@ -132,7 +129,6 @@
     <Content Include="Sprites\Dungeon\floor2topleftfull.png" />
     <Content Include="Sprites\Dungeon\floor2topright.png" />
     <Content Include="Sprites\Dungeon\floor2toprightfull.png" />
-    <Content Include="Sprites\Dungeon\lock.png" />
     <Content Include="Sprites\Dungeon\walldea.png" />
     <Content Include="Sprites\Dungeon\walldeb.png" />
     <Content Include="Sprites\Dungeon\walldna.png" />

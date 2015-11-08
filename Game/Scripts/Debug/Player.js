@@ -106,17 +106,7 @@ Player.prototype.AddCoins = function (amount)
 
 Player.prototype.Update = function ()
 {
-    game.physics.arcade.collide(this.sprite, groupDungeonWalls);
-    game.physics.arcade.collide(this.sprite, groupUnderBlockLayer, this.TouchDoor, null, this);
-    game.physics.arcade.overlap(this.sprite, groupPickupItems, this.PickUpItem, null, this);
-    game.physics.arcade.overlap(this.sprite, groupLevelEntities, this.HandleLevelEntities, null, this);
-    game.physics.arcade.overlap(this.bullets, groupActors, this.PlayerHitActor, null, this);
-    game.physics.arcade.overlap(this.sprite, groupMonsterProjectiles, this.MonsterProjHitPlayer, null, this);
-    game.physics.arcade.overlap(groupActors, groupPlayerProjectiles, this.PlayerProjHitMonster, null, this);
-    game.physics.arcade.overlap(this.bullets, groupDungeonWalls, this.BulletHitTerrain, null, this);
-    // TODO: Chuck all this out somewhere else?
-
-    var v = new Vector(0, 0);
+    var v = new Vector(0, 0); // Used to determine player velocity
 
     if (gameManager.movementEnabled)
     {
@@ -287,84 +277,6 @@ Player.prototype.RemoveFromInventory = function (i)
     hud.Update();
 }
 
-
-// Player collisions
-
-Player.prototype.PickUpItem = function (player, pickupItem)
-{
-    pickupItem.object.PickUp();
-}
-
-Player.prototype.TouchDoor = function (player, door)
-{
-    for (var i = 0; i < player.object.inventory.length; i++)
-    {
-        var item = player.object.inventory[i];
-
-        if (item instanceof Key && door.object && door.object instanceof Door && item.keyType == door.object.lock)
-        {
-            door.object.Unlock();
-            player.object.RemoveFromInventory(i);
-            return;
-        }
-    }
-}
-
-Player.prototype.HandleLevelEntities = function (player, levelEntity)
-{
-    if (levelEntity.object && levelEntity.object instanceof LevelExit)
-    {
-        gameManager.AdvanceLevel();
-    }
-}
-
-// Bullet collisions
-
-Player.prototype.PlayerHitActor = function (bullet, actor)
-{
-    if (actor.object && actor.object instanceof Monster)
-    {
-        actor.object.TakeDamage(2);
-        bullet.kill();
-    }
-}
-
-Player.prototype.BulletHitTerrain = function (bullet, terrain)
-{
-    bullet.kill();
-}
-
-// Enemy hits player
-
-Player.prototype.MonsterProjHitPlayer = function (player, monsterProj)
-{
-    if (monsterProj.object && monsterProj.object instanceof MonsterAttack)
-    {
-        var monsterAttack = monsterProj.object;
-
-        if (monsterAttack.active)
-        {
-            monsterAttack.ResetProjectiles(false, 0, 0);
-            player.object.TakeDamage(monsterAttack.damage);
-        }
-    }
-}
-
-// Player hits enemy with melee
-
-Player.prototype.PlayerProjHitMonster = function (actor, playerProj)
-{
-    if (actor.object && actor.object instanceof Monster && playerProj.object && playerProj.object instanceof PlayerMeleeAttack)
-    {
-        var playerMeleeAttack = playerProj.object;
-
-        if (playerMeleeAttack.active)
-        {
-            playerMeleeAttack.HitMonster(actor.object);
-        }
-    }
-}
-
 function PlayerMeleeAttack(x, y, projsize)
 {
     this.projectiles = []; // Storage for projectiles which are used in this attack
@@ -530,3 +442,4 @@ PlayerMeleeAttack.prototype.ResetProjectiles = function (alive, x, y)
         }
     }
 }
+
