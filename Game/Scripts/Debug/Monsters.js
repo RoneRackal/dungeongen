@@ -6,26 +6,31 @@
 function Monster(x, y, room, image)
 {
     this.image = image;
-    this.health = 10;
     this.room = room;
     this.active = false;
     this.dead = false;
-    this.speed = 150;
-    this.room.RegisterMonster(this);
     this.knockedBack = false;
-    this.monsterLevel = 1;
-    this.astar = true;
+    this.room.RegisterMonster(this);
 
     this.monsterAttack = new MonsterAttack(x, y, 'batattack');
     this.monsterAttack.ResetProjectiles(false, x, y);
     this.readyToAttack = true;
     this.attackTimerNext = game.time.now;
     this.attackTimerEnd = game.time.now;
+
+    this.InitSprite(x, y);
+    this.InitProperties();
+}
+
+Monster.prototype.InitProperties = function ()
+{
     this.attackTimerInterval = 1000; // milliseconds between attacks
     this.attackTimeDuration = 300; // milliseconds an attack will last for
     this.attackRange = 48; // Range the monster can attack from
-
-    this.InitSprite(x, y);
+    this.astar = true; // whether to use A* pathfinding
+    this.health = 10; // health of the monster
+    this.monsterLevel = 1; // monster level, used for determining loot
+    this.speed = 150; // movement speed of the monster
 }
 
 Monster.prototype.InitSprite = function (x, y)
@@ -191,7 +196,6 @@ Monster.prototype.Attack = function ()
 function AnimatedMonster(x, y, room, image) // extends Monster
 {
     Monster.call(this, x, y, room, image);
-    this.Init(x, y);
 }
 AnimatedMonster.prototype = Object.create(Monster.prototype);
 AnimatedMonster.prototype.constructor = AnimatedMonster;
@@ -240,13 +244,14 @@ AnimatedMonster.prototype.Update = function ()
 function Slime(x, y, room) // extends AnimatedMonster
 {
     AnimatedMonster.call(this, x, y, room, 'slime');
-    this.Init(x, y);
 }
 Slime.prototype = Object.create(AnimatedMonster.prototype);
 Slime.prototype.constructor = Slime;
 
-Slime.prototype.Init = function ()
+Slime.prototype.InitProperties = function ()
 {
+    AnimatedMonster.prototype.InitProperties.call(this);
+
     this.monsterLevel = 2;
     this.health = 10;
     this.speed = 150;
@@ -268,15 +273,17 @@ Slime.prototype.OnDeath = function ()
 function Bat(x, y, room) // extends AnimatedMonster
 {
     AnimatedMonster.call(this, x, y, room, 'bat');
-    this.Init(x, y);
 }
 Bat.prototype = Object.create(AnimatedMonster.prototype);
 Bat.prototype.constructor = Bat;
 
-Bat.prototype.Init = function ()
+Bat.prototype.InitProperties = function ()
 {
+    AnimatedMonster.prototype.InitProperties.call(this);
+
     this.monsterLevel = 1;
     this.health = 1;
     this.speed = 300
     this.astar = false;
 }
+

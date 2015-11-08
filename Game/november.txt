@@ -19,9 +19,9 @@ Graphics
  + Door colours - star exploding particles
 
 Refactoring
- - Collisions, do this seperately from player
+ + Collisions, do this seperately from player
  - Monster
-   - Monster init seperation
+   + Monster init seperation
    - Monster Attack
 
 Bugs
@@ -33,4 +33,4 @@ Bugs
  + Rubble spawns blocking doors
  + Rubble spawns in rubble
 
-7/25
+9/25
